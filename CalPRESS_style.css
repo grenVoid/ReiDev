@@ -1,0 +1,784 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-main: #080808;
+    --bg-soft: #0c0c0c;
+    --bg-card: #111111;
+    --border: #292929;
+    --text-main: #ffffff;
+    --text-light: #c7c7c7;
+    --text-muted: #737373;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-family: "Space Mono", monospace;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.calpress_page {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse 70% 80% at 85% 10%,
+            rgba(180, 180, 180, 0.045),
+            transparent 65%),
+        linear-gradient(135deg,
+            #070707 0%,
+            #0b0b0b 50%,
+            #080808 100%);
+}
+
+.calpress_header {
+    width: 100%;
+    height: 82px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.back_projects {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #777777;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.back_projects:hover {
+    color: #eeeeee;
+    transform: translateX(-4px);
+}
+
+.back_arrow {
+    color: #bdbdbd;
+    font-size: 1rem;
+}
+
+.calpress_brand {
+    color: #eeeeee;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.calpress_hero,
+.calpress_information,
+.calpress_footer {
+    position: relative;
+    box-shadow:
+        inset 0 32px 40px -38px rgba(0, 0, 0, 0.95),
+        inset 0 -32px 40px -38px rgba(0, 0, 0, 0.95);
+}
+
+.calpress_hero {
+    min-height: calc(100vh - 82px);
+    padding: 90px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+    overflow: hidden;
+    background:
+        linear-gradient(90deg,
+            #080808 0%,
+            #090909 42%,
+            #0d0d0d 100%);
+}
+
+.calpress_hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg,
+            rgba(8, 8, 8, 0.95) 0%,
+            rgba(8, 8, 8, 0.7) 42%,
+            rgba(8, 8, 8, 0.1) 100%);
+    pointer-events: none;
+}
+
+.calpress_hero_content {
+    position: relative;
+    z-index: 3;
+    max-width: 650px;
+}
+
+.calpress_label {
+    margin-bottom: 18px;
+    color: #737373;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.calpress_title {
+    margin-bottom: 38px;
+    color: #ffffff;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.85;
+    letter-spacing: -6px;
+}
+
+.calpress_summary_label {
+    margin-bottom: 10px;
+    color: #8b8b8b;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.calpress_summary {
+    max-width: 590px;
+    color: #a0a0a0;
+    font-size: 0.78rem;
+    line-height: 1.95;
+}
+
+.see_more_button {
+    width: fit-content;
+    min-width: 165px;
+    height: 46px;
+    margin-top: 34px;
+    padding: 0 19px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    color: #0a0a0a;
+    background:
+        linear-gradient(115deg,
+            #858585 0%,
+            #d7d7d7 20%,
+            #ffffff 38%,
+            #a4a4a4 50%,
+            #f5f5f5 65%,
+            #858585 82%,
+            #dddddd 100%);
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    border: 1px solid #eeeeee;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    font-size: 0.57rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-position 0.5s ease;
+}
+
+.see_more_button:hover {
+    transform: translateY(-3px);
+    background-position: 100% 50%;
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.see_more_arrow {
+    font-size: 1rem;
+}
+
+.calpress_hero_visual {
+    position: relative;
+    z-index: 2;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calpress_hero_visual::before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background:
+        radial-gradient(circle,
+            rgba(180, 180, 180, 0.08),
+            transparent 68%);
+    filter: blur(20px);
+}
+
+.calpress_hero_visual img {
+    position: relative;
+    width: min(100%, 560px);
+    max-height: 520px;
+    object-fit: contain;
+    opacity: 0.8;
+    transform: scale(1.02);
+    transition:
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.4s ease;
+}
+
+.calpress_hero_visual:hover img {
+    transform: scale(1.06);
+    opacity: 0.96;
+}
+
+.calpress_information {
+    width: 100%;
+    margin: 0;
+    padding: 130px max(6%, calc((100vw - 1180px) / 2)) 110px;
+    background:
+        linear-gradient(135deg,
+            #080808 0%,
+            #0b0b0b 45%,
+            #101010 100%);
+}
+
+.information_heading {
+    max-width: 800px;
+    margin-bottom: 90px;
+}
+
+.information_heading h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -4px;
+}
+
+.information_heading>p:last-child {
+    max-width: 680px;
+    color: #8f8f8f;
+    font-size: 0.8rem;
+    line-height: 1.9;
+}
+
+.info_block {
+    min-height: 520px;
+    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.info_block_reverse {
+    grid-template-columns: 0.8fr 1.2fr;
+}
+
+.info_block_reverse .info_visual {
+    order: 2;
+}
+
+.info_block_reverse .info_content {
+    order: 1;
+}
+
+.info_visual {
+    position: relative;
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg,
+            rgba(24, 24, 24, 0.96),
+            rgba(11, 11, 11, 0.98));
+    border: 1px solid #292929;
+}
+
+.info_visual img {
+    width: 100%;
+    height: 100%;
+    min-height: 430px;
+    object-fit: contain;
+    padding: 30px;
+    opacity: 1;
+    transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.info_visual:hover img {
+    transform: scale(1.04);
+}
+
+.info_content {
+    max-width: 520px;
+}
+
+.info_number {
+    display: block;
+    margin-bottom: 18px;
+    color: #5f5f5f;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.info_content h3 {
+    margin-bottom: 22px;
+    color: #efefef;
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.info_content p {
+    color: #929292;
+    font-size: 0.76rem;
+    line-height: 1.95;
+}
+
+.info_content p+p {
+    margin-top: 24px;
+}
+
+.info_tags {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.info_tags span {
+    padding: 7px 9px;
+    color: #a9a9a9;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.development_status {
+    margin-top: 28px;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid #3a3a3a;
+}
+
+.development_status_label {
+    display: block;
+    margin-bottom: 8px;
+    color: #707070;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.development_status strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #e5e5e5;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.development_status p {
+    color: #858585;
+    font-size: 0.64rem;
+    line-height: 1.85;
+}
+
+.calpress_footer {
+    min-height: 65vh;
+    padding: 110px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at center,
+            rgba(180, 180, 180, 0.05),
+            transparent 62%),
+        #080808;
+}
+
+.calpress_footer_content {
+    max-width: 700px;
+}
+
+.calpress_footer_content h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -4px;
+}
+
+.calpress_footer_content>p:not(.calpress_label) {
+    color: #858585;
+    font-size: 0.78rem;
+    line-height: 1.9;
+}
+
+.feedback_button {
+    min-width: 200px;
+    height: 46px;
+    margin-top: 32px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    color: #0a0a0a;
+    background:
+        linear-gradient(115deg,
+            #858585 0%,
+            #d7d7d7 20%,
+            #ffffff 38%,
+            #a4a4a4 50%,
+            #f5f5f5 65%,
+            #858585 82%,
+            #dddddd 100%);
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    border: 1px solid #eeeeee;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    font-size: 0.57rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-position 0.5s ease;
+}
+
+.feedback_button:hover {
+    transform: translateY(-3px);
+    background-position: 100% 50%;
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+body.calpress_animate_ready .calpress_hero_content,
+body.calpress_animate_ready .calpress_hero_visual,
+body.calpress_animate_ready .information_heading,
+body.calpress_animate_ready .info_visual,
+body.calpress_animate_ready .info_content,
+body.calpress_animate_ready .calpress_footer_content {
+    opacity: 0;
+}
+
+body.calpress_animate_ready .calpress_hero_content {
+    transform: translateX(-55px);
+    transition:
+        opacity 0.85s ease,
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.calpress_animate_ready .calpress_hero_visual {
+    transform: translateX(55px);
+    transition:
+        opacity 0.95s ease,
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.calpress_animate_ready .information_heading {
+    transform: translateY(45px);
+    transition:
+        opacity 0.85s ease,
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.calpress_animate_ready .info_visual {
+    transform: translateX(-45px);
+    transition:
+        opacity 0.85s ease,
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.calpress_animate_ready .info_content {
+    transform: translateX(45px);
+    transition:
+        opacity 0.85s ease 0.1s,
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+body.calpress_animate_ready .info_block_reverse .info_visual {
+    transform: translateX(45px);
+}
+
+body.calpress_animate_ready .info_block_reverse .info_content {
+    transform: translateX(-45px);
+}
+
+body.calpress_animate_ready .calpress_footer_content {
+    transform: translateY(45px);
+    transition:
+        opacity 0.9s ease,
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.calpress_animate_ready .calpress_hero_content.is-visible,
+body.calpress_animate_ready .calpress_hero_visual.is-visible,
+body.calpress_animate_ready .information_heading.is-visible,
+body.calpress_animate_ready .calpress_footer_content.is-visible {
+    opacity: 1;
+}
+
+body.calpress_animate_ready .calpress_hero_content.is-visible {
+    transform: translateX(0);
+}
+
+body.calpress_animate_ready .calpress_hero_visual.is-visible {
+    transform: translateX(0);
+}
+
+body.calpress_animate_ready .information_heading.is-visible {
+    transform: translateY(0);
+}
+
+body.calpress_animate_ready .info_block.is-visible .info_visual,
+body.calpress_animate_ready .info_block.is-visible .info_content {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+body.calpress_animate_ready .calpress_footer_content.is-visible {
+    transform: translateY(0);
+}
+
+@media screen and (max-width: 900px) {
+
+    .calpress_hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: 80px;
+    }
+
+    .calpress_hero_content {
+        max-width: 760px;
+    }
+
+    .calpress_hero_visual {
+        min-height: 360px;
+        order: -1;
+    }
+
+    .calpress_hero_visual img {
+        width: min(90%, 500px);
+    }
+
+    .calpress_information {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+
+    .info_block,
+    .info_block_reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .info_block_reverse .info_visual,
+    .info_block_reverse .info_content {
+        order: initial;
+    }
+
+    .info_visual {
+        min-height: 360px;
+    }
+
+    .info_visual img {
+        min-height: 360px;
+    }
+
+    .info_content {
+        max-width: 700px;
+    }
+
+    body.calpress_animate_ready .info_visual,
+    body.calpress_animate_ready .info_block_reverse .info_visual,
+    body.calpress_animate_ready .info_content,
+    body.calpress_animate_ready .info_block_reverse .info_content {
+        transform: translateY(35px);
+    }
+
+    body.calpress_animate_ready .info_block.is-visible .info_visual,
+    body.calpress_animate_ready .info_block.is-visible .info_content {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .calpress_header {
+        height: 70px;
+        padding: 0 5%;
+    }
+
+    .back_projects {
+        font-size: 0.56rem;
+        letter-spacing: 1.3px;
+    }
+
+    .calpress_brand {
+        font-size: 0.9rem;
+    }
+
+    .calpress_hero {
+        min-height: auto;
+        padding: 65px 7% 80px;
+        gap: 35px;
+    }
+
+    .calpress_title {
+        margin-bottom: 28px;
+        font-size: clamp(3.2rem, 17vw, 5.5rem);
+        letter-spacing: -4px;
+    }
+
+    .calpress_summary {
+        font-size: 0.68rem;
+        line-height: 1.9;
+    }
+
+    .calpress_hero_visual {
+        min-height: 260px;
+    }
+
+    .calpress_hero_visual img {
+        width: 95%;
+    }
+
+    .see_more_button {
+        min-width: 150px;
+        height: 44px;
+        margin-top: 28px;
+        font-size: 0.54rem;
+    }
+
+    .calpress_information {
+        padding: 90px 7% 70px;
+    }
+
+    .information_heading {
+        margin-bottom: 60px;
+    }
+
+    .information_heading h2 {
+        font-size: clamp(2.6rem, 13vw, 4rem);
+        letter-spacing: -2.5px;
+    }
+
+    .information_heading>p:last-child {
+        font-size: 0.68rem;
+        line-height: 1.9;
+    }
+
+    .info_block,
+    .info_block_reverse {
+        margin-bottom: 65px;
+        gap: 28px;
+    }
+
+    .info_visual,
+    .info_visual img {
+        min-height: 260px;
+    }
+
+    .info_visual img {
+        padding: 20px;
+    }
+
+    .info_content h3 {
+        font-size: 1.8rem;
+        letter-spacing: -1.5px;
+    }
+
+    .info_content p {
+        font-size: 0.67rem;
+        line-height: 1.9;
+    }
+
+    .info_content p+p {
+        margin-top: 20px;
+    }
+
+    .info_tags span {
+        font-size: 0.49rem;
+    }
+
+    .development_status {
+        padding: 16px 17px;
+    }
+
+    .development_status strong {
+        font-size: 0.65rem;
+    }
+
+    .development_status p {
+        font-size: 0.6rem;
+        line-height: 1.8;
+    }
+
+    .calpress_footer {
+        min-height: 55vh;
+        padding: 80px 7%;
+    }
+
+    .calpress_footer_content h2 {
+        font-size: clamp(2.5rem, 13vw, 4rem);
+        letter-spacing: -2.5px;
+    }
+
+    .calpress_footer_content>p:not(.calpress_label) {
+        font-size: 0.68rem;
+    }
+
+    .feedback_button {
+        min-width: 185px;
+        height: 44px;
+        font-size: 0.54rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    body.calpress_animate_ready .calpress_hero_content,
+    body.calpress_animate_ready .calpress_hero_visual,
+    body.calpress_animate_ready .information_heading,
+    body.calpress_animate_ready .info_content,
+    body.calpress_animate_ready .info_visual,
+    body.calpress_animate_ready .calpress_footer_content {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .see_more_button,
+    .feedback_button,
+    .calpress_hero_visual img,
+    .info_visual img {
+        transition: none !important;
+    }
+}
