@@ -2,7 +2,7 @@ const projects = [
     {
         type: "SOFTWARE PROJECT",
         name: "iTinda",
-        image: "img_projects/itinda.png",
+        image: "img_projects/iTinda.png",
         imageAlt: "iTinda application icon",
         summary:
             "A point-of-sale software application designed for handling products, inventory, sales transactions, and basic store operations.",
@@ -46,7 +46,7 @@ const projects = [
     {
         type: "MOBILE PROJECT",
         name: "Chrona",
-        image: "img_projects/chrona.png",
+        image: "img_projects/Chrona.png",
         imageAlt: "Chrona application icon",
         summary:
             "A mobile productivity application that combines scheduling, reminders, and accountability to help users stay organized and follow through with planned activities.",
